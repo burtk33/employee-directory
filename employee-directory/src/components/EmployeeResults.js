@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import findEmployees from "../utils/findEmployees";
 import EmployeeCard from "./EmployeeCard";
+import NavBar from "./NavBar";
+
 
 class EmployeeResults extends Component {
     state = {
-        employees: []
+        employees: [],
+        search: ""
     };
 
     componentDidMount() {
@@ -13,27 +16,43 @@ class EmployeeResults extends Component {
             .catch(err => console.log(err));
     }
 
+    handleInputChange=(e)=>{
+        this.setState({search:e.target.value});
+        const newArray=this.state.employees.filter(data=>{
+            if(data.name.first.toLowerCase().includes(this.state.search.toLowerCase())){
+                return data;
+            }
+            else if(data.name.last.toLowerCase().includes(this.state.search.toLowerCase())){
+               return data;
+            }
+        });
+        this.setState({employees:newArray});
+    }
+
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    {this.state.employees.map(data => (
-                        <EmployeeCard
-                            id={data.login.uuid}
-                            firstName={data.name.first}
-                            lastName={data.name.last}
-                            picture={data.picture.large}
-                        />
-                    ))
-                    }
+            <div>
+                <NavBar
+                search={this.state.search}
+                handleInputChange={this.handleInputChange}
+                />
+                <div className="container">
+                    <div className="row">
+                        {this.state.employees.map(data => (
+                            <EmployeeCard
+                                id={data.login.uuid}
+                                firstName={data.name.first}
+                                lastName={data.name.last}
+                                picture={data.picture.large}
+                            />
+                        ))
+                        }
+                    </div>
                 </div>
-
             </div>
 
         );
     }
-
-
 }
 
 export default EmployeeResults;

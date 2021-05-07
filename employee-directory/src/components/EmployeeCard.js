@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col"
 function EmployeeCard(props) {
     return (
         <Col>
-            <Card style={{ width: '10rem' }}>
+            <Card style={{ width: '10rem' , margin: '15px'}}>
                 <Card.Img variant="top" src={props.picture} />
                 <Card.Body>
                     <Card.Title>{props.firstName} {props.lastName}</Card.Title>

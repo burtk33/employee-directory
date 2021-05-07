@@ -5,7 +5,6 @@ import EmployeeResults from "./components/EmployeeResults";
 function App() {
   return (
     <div>
-      <NavBar/>
       <EmployeeResults/>
     </div>
   );

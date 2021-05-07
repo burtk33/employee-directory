@@ -1,15 +1,19 @@
 import React from "react";
+import {Navbar, Nav} from "react-bootstrap"
+import {Form, FormControl} from "react-bootstrap";
+import {Button} from "react-bootstrap"
 
-function NavBar() {
+function NavBar(props) {
     return (
-        <div>
-            <nav className="navbar navbar-light bg-dark">
-                <div className="container-fluid">
-                    <span className="navbar-brand mb-0 h1 justify-content-center text-white">Employee Directory</span>
-                </div>
-            </nav>
-
-        </div>
+        <Navbar bg="dark" variant="dark" style={{padding: '15px'}}>
+            <Navbar.Brand>Employee Directory</Navbar.Brand>
+            <Nav className="mr-auto">
+                <Nav.Link>Sort A-Z</Nav.Link>
+            </Nav>
+            <Form>
+                <FormControl type="text" placeholder="Search Name" className="mr-sm-2" onChange={props.handleInputChange} />   
+            </Form>
+        </Navbar>
     );
 }
 
