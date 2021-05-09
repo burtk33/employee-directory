@@ -8,7 +8,7 @@ function NavBar(props) {
         <Navbar bg="dark" variant="dark" style={{padding: '15px'}}>
             <Navbar.Brand>Employee Directory</Navbar.Brand>
             <Nav className="mr-auto">
-                <Nav.Link>Sort A-Z</Nav.Link>
+                <Nav.Link onClick={props.handleSort}>Sort A-Z</Nav.Link>
             </Nav>
             <Form>
                 <FormControl type="text" placeholder="Search Name" className="mr-sm-2" onChange={props.handleInputChange} />   

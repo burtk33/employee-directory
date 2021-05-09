@@ -7,7 +7,7 @@ import NavBar from "./NavBar";
 class EmployeeResults extends Component {
     state = {
         employees: [],
-        search: ""
+        search: "",
     };
 
     componentDidMount() {
@@ -29,12 +29,18 @@ class EmployeeResults extends Component {
         this.setState({employees:newArray});
     }
 
+    handleSort=()=>{
+        const sorted=this.state.employees.name.first.sort();
+        this.setState({employees:sorted});
+    }
+
     render() {
         return (
             <div>
                 <NavBar
                 search={this.state.search}
                 handleInputChange={this.handleInputChange}
+                handleSort={this.handleSort}
                 />
                 <div className="container">
                     <div className="row">
